@@ -91,6 +91,9 @@ public class Verbe implements InterVerbe {
 		// Infinitif
 		conjugaison.add(modes[10]);
 		conjugaison.add(this.radical + this.terminaison);
+		
+		// Gérondif
+		
 		return conjugaison;
 	}
 
