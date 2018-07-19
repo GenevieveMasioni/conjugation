@@ -1,7 +1,4 @@
-package verbes;
-
-import conjugaison.InterFabriqueVerbe;
-import conjugaison.InterVerbe;
+package conjugaison;
 
 public class FabriqueVerbe implements InterFabriqueVerbe {
 	private static String suffixe_1erG = "er";
@@ -15,18 +12,17 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 	private static String[] affixes_3eG = {};
 
 	@Override
-	public InterVerbe getVerbe(String v) {
+	public Verbe getVerbe(String v) {
 		boolean vp = false;
 		String[] segments = v.split(" |'");
 		if (segments.length == 2)
 			vp = true;
-		// detect group
 		if (v.substring(v.length() - 2, v.length()).equals(suffixe_1erG))
-			return new Verbe1erG(v, vp, affixes_1erG);
+			return new VerbeRégulier(v, vp, affixes_1erG);
 		else if (v.substring(v.length() - 2, v.length()).equals(suffixe_2eG))
 			// check participe présent "-issant"
-			return new Verbe2eG(v, vp, affixes_2eG);
+			return new VerbeRégulier(v, vp, affixes_2eG);
 		else
-			return new Verbe3eG(v, vp, affixes_3eG);
+			return new VerbeIrrégulier(v, vp, affixes_3eG);
 	}
 }
