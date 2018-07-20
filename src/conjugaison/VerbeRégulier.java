@@ -27,70 +27,61 @@ public class VerbeRégulier implements Verbe {
 		}
 
 		this.terminaison = vb.substring(vb.length() - 2);
-		
+
 		Temps[] tps = Temps.values();
-		this.affixes = new HashMap<String,String>();
-		for(int i = 0; i < af.length; ++i) {
+		this.affixes = new HashMap<String, String>();
+		for (int i = 0; i < af.length; ++i) {
 			affixes.put(tps[i].toString(), af[i]);
 		}
 	}
 
-	public String getRadical() {
-		return this.radical;
-	}
-
-	public String getTerminaison() {
-		return this.terminaison;
-	}
-
-	public boolean estPronominal() {
-		return this.VerbePronominal;
-	}
-
-	public String getPronominal() {
-		return this.pronominal;
-	}
-	
-	public String conjuguer(Temps tps, int personne, String nombre) {
-		String[] p = this.choisirPronoms();
-		
-		String[] af = affixes.get(tps.toString()).split(",");
-		
-		if(nombre.equals("singulier")) personne--;
-		else if(nombre.equals("pluriel")) personne += 2;
-		else {
-			System.out.println("Erreur. Je ne sais pas conjuguer.");
-			return "";
+	public String conjuguer(Temps tps, int num, Multiplicité mult) throws IllegalArgumentException {
+		if (tps == Temps.Participe_présent || tps == Temps.Participe_passé || tps == Temps.Infinitif_présent
+				|| tps == Temps.Gérondif) {
+			throw new IllegalArgumentException("Personne et nombre non-conformes avec le temps.");
 		}
-		
-		return p[personne] + " " + this.radical + af[personne];
+		String[] p = this.choisirPronoms();
+
+		String[] af = affixes.get(tps.toString()).split(",");
+
+		num--;
+		if (mult == Multiplicité.pluriel)
+			num += 3;
+		return p[num] + " " + this.radical + af[num];
 	}
-	
+
 	public String conjuguerAu(Temps tps) {
+		String[] af, p;
 		String s = "";
-		
-		if(tps == Temps.Impératif_présent) {
-			String[] af = affixes.get(tps.toString()).split(",");
-			for(String a : af) s += this.radical + a;
+
+		switch (tps) {
+		case Impératif_présent:
+			af = affixes.get(tps.toString()).split(",");
+			for (String a : af)
+				s += this.radical + a;
 			return s;
-		} else if(tps == Temps.Participe_présent ||
-				tps == Temps.Participe_passé)
+		case Participe_présent:
+		case Participe_passé:
 			return this.radical + affixes.get(tps.toString());
-		else if(tps == Temps.Infinitif_présent)
+		case Infinitif_présent:
 			return this.radical + this.terminaison;
-		else if(tps == Temps.Gérondif)
+		case Gérondif:
 			return "en " + this.getParticipePrésent();
-		else {
-			String[] p = this.choisirPronoms();
-			String[] af = affixes.get(tps.toString()).split(",");
-			for(int i = 0; i < af.length; ++i) 
+		default:
+			p = this.choisirPronoms();
+			af = affixes.get(tps.toString()).split(",");
+			for (int i = 0; i < af.length; ++i)
 				s += p[i] + " " + this.radical + af[i] + "\n";
 			return s;
 		}
 	}
-	
+
 	private String getParticipePrésent() {
 		return this.radical + affixes.get(Temps.Participe_présent.toString());
+	}
+	
+	private boolean estPronominal() {
+		return this.VerbePronominal;
 	}
 
 	public String[] choisirPronoms() {
@@ -100,9 +91,9 @@ public class VerbeRégulier implements Verbe {
 			else
 				return this.pronomsPronominaux_S;
 		} else {
-			if(this.radical.charAt(0) == 'a' || this.radical.charAt(0) == 'e') 
+			if (this.radical.charAt(0) == 'a' || this.radical.charAt(0) == 'e')
 				return this.pronoms_voyelle;
-			else 
+			else
 				return this.pronoms;
 		}
 	}
