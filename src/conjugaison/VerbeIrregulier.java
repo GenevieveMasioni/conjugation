@@ -1,8 +1,8 @@
 package conjugaison;
 
-public class VerbeIrrégulier implements Verbe {
+public class VerbeIrregulier implements Verbe {
 	
-	public VerbeIrrégulier(String vb, boolean vp, String[] af) {
+	public VerbeIrregulier(String vb, boolean vp, String[] af) {
 		// héritage à revoir
 //		super(vb, vp, af);
 		// TODO Auto-generated constructor stub

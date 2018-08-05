@@ -9,6 +9,15 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 	private static String[] affixes_2eG = { "s,s,t,ssons,ssez,ssent", "ssais,ssais,ssait,ssions,ssiez,ssaient",
 			"is,is,it,îmes,îtes,irent", "rai,ras,ra,rons,rez,ront", "rais,rais,rait,rions,riez,raient",
 			"sse,sses,sse,ssions,ssiez,ssent", "sse,sses,t,ssions,ssiez,ssent", "s,ssons,ssez", "ssant", "i" };
+	
+	public String[] exceptions = { "aller", "tenir", "acquérir", "sentir", "vêtir", "couvrir", "cueillir", "assaillir",
+			"faillir", "bouillir", "dormir", "courir", "mourir", "servir", "fuir", "ouïr", "gésir", "recevoir", "voir",
+			"pourvoir", "savoir", "devoir", "pouvoir", "mouvoir", "pleuvoir", "falloir", "valoir", "vouloir", "asseoir",
+			"seoir", "messeoir", "surseoir", "choir", "échoir", "déchoir", "rendre", "prendre", "battre", "mettre",
+			"peindre", "joindre", "craindre", "vaincre", "traire", "faire", "plaire", "connaitre", "naître", "paître",
+			"repaître", "croître", "croire", "boire", "clore", "conclure", "absoudre", "coudre", "moudre", "suivre",
+			"vivre", "lire", "dire", "rire", "écrire", "confire", "cuir"};
+	
 	private static String[] affixes_3eG_ir = { "e,es,e,ons,ez,ont", "ais,ais,ait,ions,iez,aient",
 			"is,is,it,îmes,îtes,irent", "rai,ras,ra,rons,rez,ront", "rais,rais,rait,rions,riez,raient",
 			"e,es,e,ions,iez,ent", "isse,isses,ît,issions,issiez,issent", "e,ons,ez", "ant", "i" };
@@ -22,18 +31,29 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 
 	@Override
 	public Verbe getVerbe(String v) {
-		boolean vp = false;
-		String[] segments = v.split(" |'");
-		if (segments.length == 2)
-			vp = true;
-		if (v.substring(v.length() - 2, v.length()).equals(suffixe_1erG))
-			return new VerbeRégulier(v, vp, affixes_1erG);
-		else if (v.substring(v.length() - 2, v.length()).equals(suffixe_2eG)) {
-			if (v.charAt(v.length() - 3) == 'n' || v.charAt(v.length() - 3) == 'm' || v.charAt(v.length() - 3) == 'l')
-				return new VerbeRégulier(v, vp, affixes_2eG);
-			else
-				return new VerbeIrrégulier(v, vp, affixes_3eG);
-		} else
-			return new VerbeIrrégulier(v, vp, affixes_3eG);
+		if(estUneException(v)) {
+			return new VerbeSpecial(v);
+		} else {
+			boolean vp = false;
+			String[] segments = v.split(" |'");
+			if (segments.length == 2)
+				vp = true;
+			if (v.substring(v.length() - 2, v.length()).equals(suffixe_1erG))
+				return new VerbeRegulier(v, vp, affixes_1erG);
+			else if (v.substring(v.length() - 2, v.length()).equals(suffixe_2eG)) {
+				if (v.charAt(v.length() - 3) == 'n' || v.charAt(v.length() - 3) == 'm' || v.charAt(v.length() - 3) == 'l')
+					return new VerbeRegulier(v, vp, affixes_2eG);
+				else
+					return new VerbeIrregulier(v, vp, affixes_3eG);
+			} else
+				return new VerbeIrregulier(v, vp, affixes_3eG);
+		}
+	}
+	
+	public boolean estUneException(String v) {
+		for(String s : this.exceptions) {
+			if(s.equals(v) || s.contains(v)) return true;
+		}
+		return false;
 	}
 }

@@ -2,7 +2,7 @@ package conjugaison;
 
 import java.util.HashMap;
 
-public class VerbeRégulier implements Verbe {
+public class VerbeRegulier implements Verbe {
 	private String radical;
 	private String terminaison;
 	private boolean VerbePronominal;
@@ -15,7 +15,7 @@ public class VerbeRégulier implements Verbe {
 			"ils/elles s'" };
 	private HashMap<String, String> affixes;
 
-	public VerbeRégulier(String vb, boolean vp, String[] af) {
+	public VerbeRegulier(String vb, boolean vp, String[] af) {
 		this.VerbePronominal = vp;
 		if (vp) {
 			String[] segments = vb.split(" |'");
