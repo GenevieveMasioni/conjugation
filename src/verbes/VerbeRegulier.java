@@ -1,28 +1,26 @@
-package conjugaison;
+package verbes;
 
 import java.util.HashMap;
+
+import conjugaison.Multiplicité;
+import conjugaison.Pronoms;
+import conjugaison.Temps;
 
 public class VerbeRegulier implements Verbe {
 	private String radical;
 	private String terminaison;
-	private boolean VerbePronominal;
-	private String pronominal;
-	private String[] pronoms = { "je", "tu", "il/elle", "nous", "vous", "ils/elles" };
-	private String[] pronoms_voyelle = { "j'", "tu", "il/elle", "nous", "vous", "ils/elles" };
-	private String[] pronomsPronominaux_SE = { "je me", "tu te", "il/elle se ", "nous nous", "vous vous",
-			"ils/elles se" };
-	private String[] pronomsPronominaux_S = { "je m'", "tu t'", "il/elle s'", "nous nous", "vous vous",
-			"ils/elles s'" };
+	private boolean estPronominal;
+	private String prefixePronominal;
 	private HashMap<String, String> affixes;
 
 	public VerbeRegulier(String vb, boolean vp, String[] af) {
-		this.VerbePronominal = vp;
+		this.estPronominal = vp;
 		if (vp) {
 			String[] segments = vb.split(" |'");
-			this.pronominal = segments[0] + " ";
+			this.prefixePronominal = segments[0] + " ";
 			this.radical = segments[1].substring(0, segments[1].length() - 2);
 		} else {
-			this.pronominal = "";
+			this.prefixePronominal = "";
 			this.radical = vb.substring(0, vb.length() - 2);
 		}
 
@@ -40,18 +38,18 @@ public class VerbeRegulier implements Verbe {
 				|| tps == Temps.Gérondif) {
 			throw new IllegalArgumentException("Personne et nombre non-conformes avec le temps.");
 		}
-		String[] p = this.choisirPronoms();
+		String[] pronoms = Pronoms.choisirPronoms(this, this.estPronominal);
 
 		String[] af = affixes.get(tps.toString()).split(",");
 
 		num--;
 		if (mult == Multiplicité.pluriel)
 			num += 3;
-		return p[num] + " " + this.radical + af[num];
+		return pronoms[num] + " " + this.radical + af[num];
 	}
 
 	public String conjuguerAu(Temps tps) {
-		String[] af, p;
+		String[] af, pronoms;
 		String s = "";
 
 		switch (tps) {
@@ -68,10 +66,10 @@ public class VerbeRegulier implements Verbe {
 		case Gérondif:
 			return "en " + this.getParticipePrésent();
 		default:
-			p = this.choisirPronoms();
+			pronoms = Pronoms.choisirPronoms(this, this.estPronominal);
 			af = affixes.get(tps.toString()).split(",");
 			for (int i = 0; i < af.length; ++i)
-				s += p[i] + " " + this.radical + af[i] + "\n";
+				s += pronoms[i] + " " + this.radical + af[i] + "\n";
 			return s;
 		}
 	}
@@ -80,21 +78,11 @@ public class VerbeRegulier implements Verbe {
 		return this.radical + affixes.get(Temps.Participe_présent.toString());
 	}
 	
-	private boolean estPronominal() {
-		return this.VerbePronominal;
+	public String getPrefixePronominal() {
+		return this.prefixePronominal;
 	}
-
-	public String[] choisirPronoms() {
-		if (this.estPronominal()) {
-			if (this.pronominal.equals("se"))
-				return this.pronomsPronominaux_SE;
-			else
-				return this.pronomsPronominaux_S;
-		} else {
-			if (this.radical.charAt(0) == 'a' || this.radical.charAt(0) == 'e')
-				return this.pronoms_voyelle;
-			else
-				return this.pronoms;
-		}
+	
+	public String getRadical() {
+		return this.radical;
 	}
 }

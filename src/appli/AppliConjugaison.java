@@ -2,11 +2,11 @@ package appli;
 
 import java.util.Scanner;
 
-import conjugaison.FabriqueVerbe;
-import conjugaison.InterFabriqueVerbe;
 import conjugaison.Multiplicité;
 import conjugaison.Temps;
-import conjugaison.Verbe;
+import verbes.FabriqueVerbe;
+import verbes.InterFabriqueVerbe;
+import verbes.Verbe;
 
 public class AppliConjugaison {
 
@@ -18,15 +18,21 @@ public class AppliConjugaison {
 		cmd = sc.nextLine();
 		String[] options = cmd.split(" ");
 		
-		String verbe = options[0];
-		Temps tps = Temps.valueOf(options[1]);
+		String verbe = "";
+		int indexVerbe = 0;
+		if (options[0].equals("se")) {
+			verbe = options[0] + " " + options[1];
+			indexVerbe = 1;
+		} else
+			verbe = options[0];
+		Temps tps = Temps.valueOf(options[indexVerbe + 1]);
 		
 		InterFabriqueVerbe fv = new FabriqueVerbe();
 		Verbe vb = fv.getVerbe(verbe);
 		
-		if(options.length > 2) {
-			int personne = Integer.parseInt(options[2]);
-			Multiplicité mult = Multiplicité.valueOf(options[3]);
+		if(options.length > indexVerbe + 2) {
+			int personne = Integer.parseInt(options[indexVerbe + 2]);
+			Multiplicité mult = Multiplicité.valueOf(options[indexVerbe + 3]);
 			try {
 				System.out.println(vb.conjuguer(tps, personne, mult));
 			} catch(IllegalArgumentException e) {
