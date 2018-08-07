@@ -73,92 +73,51 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 			"oisse,oisses,oisse,oissions,oissiez,oissent", "usse,ûsses,ût,ûssions,ûssiez,ûssent", "oîs,oissons,oissez",
 			"oissant", "û", "oitre" };
 	
-	private static String[] affixes_aitre = {
-			"ais,ais,aît,aissons,aissez,aissent",
-			"aissais,aissais,aissait,aissions,aissiez,aissaient",
-			"us,us,ut,ûmes,ûtes,urent",
-			"aîtrai,aîtras,aîtra,aîtrons,aîtrez,aîtront",
-			"aîtrais,aîtrais,aîtrait,aîtrions,aîtriez,aîtraient",
-			"aisse,aisses,aisse,aissions,aissiez,aissent",
-			"usse,usses,ût,ussions,ussiez,ussent",
-			"ais,aissons,aissez",
-			"aissant",
-			"u",
-			"aître"
-};
-	
-	private static String[] affixes_clure = {
-			"us,us,ut,uons,uez,uent",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-};
-	
-	private static String[] affixes_soudre = {
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-};
+	private static String[] affixes_aitre = { "ais,ais,aît,aissons,aissez,aissent",
+			"aissais,aissais,aissait,aissions,aissiez,aissaient", "us,us,ut,ûmes,ûtes,urent",
+			"aîtrai,aîtras,aîtra,aîtrons,aîtrez,aîtront", "aîtrais,aîtrais,aîtrait,aîtrions,aîtriez,aîtraient",
+			"aisse,aisses,aisse,aissions,aissiez,aissent", "usse,usses,ût,ussions,ussiez,ussent", "ais,aissons,aissez",
+			"aissant", "u", "aître" };
 
-	private static String[] affixes_scrire = {
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-};
+	private static String[] affixes_clure = { "us,us,ut,uons,uez,uent", "uais,uais,uait,uions,uiez,uaient",
+			"us,us,ut,ûmes,ûtes,urent", "urai,uras,ura,urons,urez,uront", "urais,urais,urait,urions,uriez,uraient",
+			"ue,ues,ue,uions,uiez,uent", "usse,usses,ût,ussions,ussiez,ussent", "us,uons,uez", "uant", "u", "ure" };
 	
-	private static String[] affixes_uire = {
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-};
+	private static String[] affixes_soudre = { "sous,sous,sout,solvons,solvez,solvent",
+			"solvais,solvais,solavit,solvions,solviez,solvaient", "-,-,-,-,-,-",
+			"soudrai,soudras,soudra,soudrons,soudrez,soudront",
+			"soudrai,soudrais,soudrait,soudrions,soudriez,soudraient", "solve,solves,solve,solvions,solviez,solvent",
+			"-,-,-,-,-,-", "sous,solvons,solvez", "solvant", "sous", "soudre" };
+
+	private static String[] affixes_crire = { "cris,cris,crit,crivons,crivez,crivent",
+			"crivais,crivais,crivait,crivions,criviez,crivaient", "crivis,crivis,crivit,crivîmes,crivîtes,crivirent",
+			"crirai,criras,crira,crirons,crirez,criront", "crirais,crirais,crirais,cririons,cririez,criraient",
+			"crive,crives,crive,crivions,criviez,crivent",
+			"crivisse,crivisses,crivît,crivissions,crivissiez,crivissent", "cris,crivons,crivez", "crivant", "crit",
+			"crire" };
 	
+	private static String[] affixes_uire = { "uis,uis,uit,uisons,uisez,uisent",
+			"uisais,uisais,uissait,uisions,uisiez,uisaient", "uisis,uisis,uisit,uisîmes,uisîtes,uisirent",
+			"uirai,uiras,uira,uirons,uirez,uiront", "uirais,uirais,uirait,uirions,uiriez,uiraient",
+			"uise,uises,uise,uisions,uisiez,uisent", "uisisse,uisisses,uisît,uisissions,uisissiez,uisissent",
+			"uis,uisons,uisez", "uisant", "uit", "uire" };
 	
-	public String[] exceptions = { "aller", "vêtir", "cueillir",
-			"faillir", "bouillir", "dormir", "courir", "mourir", "servir", "fuir", "ouïr", "gésir", "recevoir", "voir",
-			"pourvoir", "savoir", "devoir", "pouvoir", "mouvoir", "pleuvoir", "falloir", "valoir", "vouloir", "asseoir",
-			"seoir", "messeoir", "surseoir", "choir", "échoir", "déchoir", "rendre", "prendre", "battre", "mettre",
-			"peindre", "joindre", "craindre", "vaincre", "traire", "faire", "plaire", "connaitre", "naître", "paître",
-			"repaître", "croître", "croire", "boire", "clore", "conclure", "absoudre", "coudre", "moudre", "suivre",
-			"vivre", "lire", "dire", "rire", "écrire", "confire", "cuire", "finir"};
+	public String[] exceptions = { "aller", "vêtir", "cueillir", "faillir", "bouillir", "dormir", "courir", "mourir",
+			"servir", "fuir", "ouïr", "gésir", "pourvoir", "savoir", "devoir", "pouvoir", "mouvoir", "pleuvoir", "voir",
+			"falloir", "valoir", "vouloir", "asseoir", "messeoir", "surseoir", "seoir", "échoir", "déchoir", "choir",
+			"rompre", "prendre", "battre", "mettre", "vaincre", "faire", "plaire", "taire", "naître", "repaître",
+			"paître", "croître", "croire", "boire", "clore", "résoudre", "coudre", "moudre", "suivre", "vivre", "lire",
+			"dire", "écrire", "rire", "confire" };
 
 	@Override
 	public Verbe getVerbe(String v) {
 		boolean vp = this.estPronominal(v);
 		
+		// Verbes du 1er groupe
 		if (v.substring(v.length() - 2, v.length()).equals(suffixe_1erG))
 			return new VerbeRegulier(v, vp, affixes_1erG);
 		
+		// Verbes type du 3e groupe
 		for (String s : this.exceptions) {
 			if (v.equals(s))
 				return new VerbeIrregulier("", vp, VerbeType.getAffixes(s));
@@ -166,6 +125,7 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 				return new VerbeIrregulier(v, vp, VerbeType.getAffixes(s));
 		}
 		
+		// Sous-ensembles des verbes du 3e groupe, réguliers entre eux
 		if(v.contains("enir")) return new VerbeIrregulier(v, vp, affixes_enir, "enir");
 		else if(v.contains("érir")) return new VerbeIrregulier(v, vp, affixes_erir, "érir");
 		else if(v.contains("tir")) return new VerbeIrregulier(v, vp, affixes_tir, "tir");
@@ -184,12 +144,12 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 		else if(v.contains("aire")) return new VerbeIrregulier(v, vp, affixes_aire, "aire");
 		else if(v.contains("aître")) return new VerbeIrregulier(v, vp, affixes_aitre, "aître");
 		else if(v.contains("oître")) return new VerbeIrregulier(v, vp, affixes_oitre, "oître");
-		else if(v.contains("clure")) return new VerbeIrregulier(v, vp, affixes_clure, "re");
+		else if(v.contains("clure")) return new VerbeIrregulier(v, vp, affixes_clure, "ure");
 		else if(v.contains("soudre")) return new VerbeIrregulier(v, vp, affixes_soudre, "soudre");
-		else if(v.contains("scrire")) return new VerbeIrregulier(v, vp, affixes_scrire, "scrire");
+		else if(v.contains("scrire")) return new VerbeIrregulier(v, vp, affixes_crire, "crire");
 		else if(v.contains("uire")) return new VerbeIrregulier(v, vp, affixes_uire, "uire");
 		
-		
+		// Verbes du 2e groupe
 		return new VerbeRegulier(v, vp, affixes_2eG);
 	}
 	
