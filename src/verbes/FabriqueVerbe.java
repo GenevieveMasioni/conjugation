@@ -121,33 +121,55 @@ public class FabriqueVerbe implements InterFabriqueVerbe {
 		for (String s : this.exceptions) {
 			if (v.equals(s))
 				return new VerbeIrregulier("", vp, VerbeType.getAffixes(s));
-			else if (v.contains(s))
+			else if (v.endsWith(s))
 				return new VerbeIrregulier(v, vp, VerbeType.getAffixes(s));
 		}
 		
 		// Sous-ensembles des verbes du 3e groupe, réguliers entre eux
-		if(v.contains("enir")) return new VerbeIrregulier(v, vp, affixes_enir, "enir");
-		else if(v.contains("érir")) return new VerbeIrregulier(v, vp, affixes_erir, "érir");
-		else if(v.contains("tir")) return new VerbeIrregulier(v, vp, affixes_tir, "tir");
-		else if(v.contains("vrir")) return new VerbeIrregulier(v, vp, affixes_vrir, "rir");
-		else if(v.contains("frir")) return new VerbeIrregulier(v, vp, affixes_vrir, "rir");
-		else if(v.contains("aillir")) return new VerbeIrregulier(v, vp, affixes_aillir, "aillir");
-		else if(v.contains("cevoir")) return new VerbeIrregulier(v, vp, affixes_cevoir, "cevoir");
-		else if(v.contains("andre")) return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
-		else if(v.contains("endre")) return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
-		else if(v.contains("ondre")) return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
-		else if(v.contains("erdre")) return new VerbeIrregulier(v, vp, affixes_erdre, "rdre");
-		else if(v.contains("ordre")) return new VerbeIrregulier(v, vp, affixes_erdre, "rdre");
-		else if(v.contains("eindre")) return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
-		else if(v.contains("oindre")) return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
-		else if(v.contains("aindre")) return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
-		else if(v.contains("aire")) return new VerbeIrregulier(v, vp, affixes_aire, "aire");
-		else if(v.contains("aître")) return new VerbeIrregulier(v, vp, affixes_aitre, "aître");
-		else if(v.contains("oître")) return new VerbeIrregulier(v, vp, affixes_oitre, "oître");
-		else if(v.contains("clure")) return new VerbeIrregulier(v, vp, affixes_clure, "ure");
-		else if(v.contains("soudre")) return new VerbeIrregulier(v, vp, affixes_soudre, "soudre");
-		else if(v.contains("scrire")) return new VerbeIrregulier(v, vp, affixes_crire, "crire");
-		else if(v.contains("uire")) return new VerbeIrregulier(v, vp, affixes_uire, "uire");
+		if (v.endsWith("enir"))
+			return new VerbeIrregulier(v, vp, affixes_enir, "enir");
+		else if (v.endsWith("érir"))
+			return new VerbeIrregulier(v, vp, affixes_erir, "érir");
+		else if (v.endsWith("tir"))
+			return new VerbeIrregulier(v, vp, affixes_tir, "tir");
+		else if (v.endsWith("vrir"))
+			return new VerbeIrregulier(v, vp, affixes_vrir, "rir");
+		else if (v.endsWith("frir"))
+			return new VerbeIrregulier(v, vp, affixes_vrir, "rir");
+		else if (v.endsWith("aillir"))
+			return new VerbeIrregulier(v, vp, affixes_aillir, "aillir");
+		else if (v.endsWith("cevoir"))
+			return new VerbeIrregulier(v, vp, affixes_cevoir, "cevoir");
+		else if (v.endsWith("andre"))
+			return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
+		else if (v.endsWith("endre"))
+			return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
+		else if (v.endsWith("ondre"))
+			return new VerbeIrregulier(v, vp, affixes_andre, "ndre");
+		else if (v.endsWith("erdre"))
+			return new VerbeIrregulier(v, vp, affixes_erdre, "rdre");
+		else if (v.endsWith("ordre"))
+			return new VerbeIrregulier(v, vp, affixes_erdre, "rdre");
+		else if (v.endsWith("eindre"))
+			return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
+		else if (v.endsWith("oindre"))
+			return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
+		else if (v.endsWith("aindre"))
+			return new VerbeIrregulier(v, vp, affixes_eindre, "indre");
+		else if (v.endsWith("aire"))
+			return new VerbeIrregulier(v, vp, affixes_aire, "aire");
+		else if (v.endsWith("aître"))
+			return new VerbeIrregulier(v, vp, affixes_aitre, "aître");
+		else if (v.endsWith("oître"))
+			return new VerbeIrregulier(v, vp, affixes_oitre, "oître");
+		else if (v.endsWith("clure"))
+			return new VerbeIrregulier(v, vp, affixes_clure, "ure");
+		else if (v.endsWith("soudre"))
+			return new VerbeIrregulier(v, vp, affixes_soudre, "soudre");
+		else if (v.endsWith("scrire"))
+			return new VerbeIrregulier(v, vp, affixes_crire, "crire");
+		else if (v.endsWith("uire"))
+			return new VerbeIrregulier(v, vp, affixes_uire, "uire");
 		
 		// Verbes du 2e groupe
 		return new VerbeRegulier(v, vp, affixes_2eG);
