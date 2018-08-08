@@ -5,11 +5,11 @@ import java.util.HashMap;
 import conjugaison.HashMapBuilder;
 
 public final class VerbeType {
-	private static HashMap<String, String> aller = HashMapBuilder.build("Indicatif_présent", "vais,vas,va,allons,allez,vont",
-			"Indicatif_imparfait", "allais,allais,allit,allions,alliez,allaient", "Indicatif_passé_simple",
-			"allai,allas,alla,allâmes,allâtes,allèrent", "Indicatif_futur_simple", "irai,iras,ira,irons,irez,iront",
-			"Conditionnel_présent", "irais,irais,irait,irions,iriez,iraient", "Subjonctif_présent",
-			"aille,ailles,aille,allions,alliez,aillent", "Subjonctif_imparfait",
+	private static HashMap<String, String> aller = HashMapBuilder.build("Indicatif_présent",
+			"vais,vas,va,allons,allez,vont", "Indicatif_imparfait", "allais,allais,allit,allions,alliez,allaient",
+			"Indicatif_passé_simple", "allai,allas,alla,allâmes,allâtes,allèrent", "Indicatif_futur_simple",
+			"irai,iras,ira,irons,irez,iront", "Conditionnel_présent", "irais,irais,irait,irions,iriez,iraient",
+			"Subjonctif_présent", "aille,ailles,aille,allions,alliez,aillent", "Subjonctif_imparfait",
 			"allasse,allasses,allât,allassions,allassiez,allassent", "Impératif_présent", "va,allons,allez",
 			"Participe_présent", "allant", "Participe_passé", "allé", "Infinitif_présent", "aller");
 	private static HashMap<String, String> vetir = HashMapBuilder.build("Indicatif_présent",
@@ -85,10 +85,9 @@ public final class VerbeType {
 			"serve,serves,serve,servions,serviez,servent", "Subjonctif_imparfait",
 			"servisse,servisses,servît,servissions,servissiez,servissent", "Impératif_présent", "sers,servons,servez",
 			"Participe_présent", "servant", "Participe_passé", "servi", "Infinitif_présent", "servir");
-	private static HashMap<String,String> fuir = HashMapBuilder.build(
-			"Indicatif_présent", "fuis,fuis,fuit,fuyons,fuyez,fuient", "Indicatif_imparfait",
-			"fuyais,fuyais,fuyait,fuyions,fuyiez,fuyaient", "Indicatif_passé_simple",
-			"fuis,fuis,fuit,fuîmes,fuîtes,fuirent", "Indicatif_futur_simple",
+	private static HashMap<String, String> fuir = HashMapBuilder.build("Indicatif_présent",
+			"fuis,fuis,fuit,fuyons,fuyez,fuient", "Indicatif_imparfait", "fuyais,fuyais,fuyait,fuyions,fuyiez,fuyaient",
+			"Indicatif_passé_simple", "fuis,fuis,fuit,fuîmes,fuîtes,fuirent", "Indicatif_futur_simple",
 			"fuirai,fuiras,fuira,fuirons,fuirez,fuiront", "Conditionnel_présent",
 			"fuirais,fuirais,fuirait,fuirions,fuiriez,fuiraient", "Subjonctif_présent",
 			"fuie,fuies,fuie,fuyions,fuyiez,fuient", "Subjonctif_imparfait",
@@ -243,30 +242,15 @@ public final class VerbeType {
 			"choirais,choirais,choirait,choirions,choiriez,choiraient", "Subjonctif_présent", "-,-,-,-,-,-",
 			"Subjonctif_imparfait", "-,-,chût,-,-,-", "Impératif_présent", "-,-,-", "Participe_présent", "-",
 			"Participe_passé", "chu", "Infinitif_présent", "choir");
-	private static HashMap<String,String> rompre = HashMapBuilder.build(
-			"Indicatif_présent",
-			"",
-			"Indicatif_imparfait",
-			"",
-			"Indicatif_passé_simple",
-			"",
-			"Indicatif_futur_simple",
-			"",
-			"Conditionnel_présent",
-			"",
-			"Subjonctif_présent",
-			"",
-			"Subjonctif_imparfait",
-			"",
-			"Impératif_présent",
-			"",
-			"Participe_présent",
-			"",
-			"Participe_passé",
-			"",
-			"Infinitif_présent",
-			""
-			);
+	private static HashMap<String, String> rompre = HashMapBuilder.build("Indicatif_présent",
+			"romps,romps,rompt,rompons,rompez,rompent", "Indicatif_imparfait",
+			"rompais,rompais,rompait,rompions,rompiez,rompaient", "Indicatif_passé_simple",
+			"rompis,rompis,rompit,rompîmes,rompîtes,rompirent", "Indicatif_futur_simple",
+			"romprai,rompras,rompra,romprons,romprez,rompront", "Conditionnel_présent",
+			"romprais,romprais,romprait,romprions,rompriez,rompraient", "Subjonctif_présent",
+			"rompe,rompes,rompe,rompionsrompiez,rompent", "Subjonctif_imparfait",
+			"rompisse,rompisses,rompît,rompissionsrompissiez,rompissent", "Impératif_présent", "romps,rompons,rompez",
+			"Participe_présent", "rompant", "Participe_passé", "rompu", "Infinitif_présent", "rompre");
 	private static HashMap<String, String> prendre = HashMapBuilder.build("Indicatif_présent",
 			"prends,prends,prend,prenons,prenez,prennent", "Indicatif_imparfait",
 			"prenais,prenais,prenait,prenions,preniez,prenaient", "Indicatif_passé_simple",
